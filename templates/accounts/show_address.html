@@ -1,0 +1,26 @@
+
+{% extends "base/base.html" %}
+
+{% block start %}
+
+  <div class="account-details">
+    <h2>Address Details</h2>
+
+   <div class="user-info">
+
+      {% for address in user.profile.addresses.all %}
+        <div>
+            <h3>Address {{ forloop.counter }}</h3>
+            <p><strong>Address line 1</strong> {{ address.address_line_1 }}</p>
+            <p><strong>Address line 2</strong> {{ address.address_line_2 }}</p>
+            <p><strong>Zip Code:</strong> {{ address.zip_code }}</p>
+            <p><strong>Locality </strong> {{ address.locality }}</p>
+            <p><strong>City:</strong> {{ address.city }}</p>
+            <p><strong>State:</strong> {{ address.state }}</p>
+        </div>
+      {% endfor %}
+
+    </div> 
+   
+  </div>
+{% endblock %}

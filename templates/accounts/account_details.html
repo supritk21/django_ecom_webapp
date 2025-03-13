@@ -1,0 +1,40 @@
+
+{% extends "base/base.html" %}
+
+{% block start %}
+<div class="container mt-5 pt-5">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="account-details">
+              <h2 class="text-center mb-4">My Account</h2>
+
+              <div class="user-info border p-4 rounded shadow-sm">
+                  <h3 class="mb-4">User Information</h3>
+                  <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                  <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                  <p><strong>Email:</strong> {{ user.email }}</p>
+              </div>
+
+              <div class="addresses mt-5">
+                  <h3 class="mb-4">Address Information</h3>
+                  {% for address in user.profile.addresses.all %}
+                  <div class="address border p-4 rounded shadow-sm mb-4">
+                      <h4>Address {{ forloop.counter }}</h4>
+                      <p><strong>Address line 1:</strong> {{ address.address_line_1 }}</p>
+                      <p><strong>Address line 2:</strong> {{ address.address_line_2 }}</p>
+                      <p><strong>Zip Code:</strong> {{ address.zip_code }}</p>
+                      <p><strong>Locality:</strong> {{ address.locality }}</p>
+                      <p><strong>City:</strong> {{ address.city }}</p>
+                      <p><strong>State:</strong> {{ address.state }}</p>
+                      <a href="#" class="btn btn-warning rounded-pill shadow-sm py-2 px-3">Update</a>
+                      <a href=" {% url 'delete_address' address.id %}" class="btn btn-danger rounded-pill shadow-sm py-2 px-3">Delete</a> 
+                      {% comment %} {% url 'delete_address' address.id %} {% endcomment %}
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+# Python & Django
+*.pyc
+__pycache__/
+db.sqlite3
+
+ecomm/env
+.env
+*.log
+# Virtual environment
+venv/
+env/
+
+# IDE Files
+.vscode/
+.idea/
+
+# Migrations
+**/migrations/*.py
+!**/migrations/__init__.py
